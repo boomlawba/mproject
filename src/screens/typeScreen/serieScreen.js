@@ -1,35 +1,19 @@
 import React from 'react';
-import { FlatList, ActivityIndicator, Text, View, StyleSheet, TextInput ,Button } from 'react-native';
-import ResultsDetail from '../component/ResultDetail';
+import { FlatList, ActivityIndicator, Text, View, StyleSheet  } from 'react-native';
+import ResultsDetail from '../../component/ResultDetail';
 
-
-export default class SearchScreen extends React.Component {
+export default class serieScreen extends React.Component {
 
   constructor(props){
     super(props);
-    this.state ={ 
-      isLoading: true,
-      movie_type: '1'
-    }
-
+    this.state ={ isLoading: true}
   }
-  click (){
-    componentDidMount()
-  }
-  componentDidMount (){
-    return  fetch("http://192.168.43.95:80/Movie_Project/test.php", {
-      method: 'POST',
-      headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        movie_type: this.state.movie_type
-      })
-  })
 
+  componentDidMount(){
+    return fetch('http://192.168.43.95:80/Movie_Project/type3.php')
       .then((response) => response.json())
       .then((responseJson) => {
+
         this.setState({
           isLoading: false, 
           dataSource: responseJson,
@@ -41,10 +25,8 @@ export default class SearchScreen extends React.Component {
       })
       .catch((error) =>{
         console.error(error);
-          
-      })
-      .done();
-}
+      });
+  }
 
 
 
@@ -60,18 +42,12 @@ export default class SearchScreen extends React.Component {
 
     return(
       <View style={styles.container}>
-
-        <TextInput 
-         placeholder='search'
-         onChangeText={movie_type => this.setState({movie_type})}
-        />
-        <Text>{this.state.movie_type}</Text>
-        <Button  onPress={() =>this.click()}/>
         <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
           <View> 
               <ResultsDetail result = {item}/>
+
               <Text style = {styles.textStyle}>
                {item.name}
               </Text>

@@ -1,28 +1,57 @@
 import React from 'react';
 import { Text,View,StyleSheet,Button,TouchableOpacity } from 'react-native';
 
+
 const MenuScreen = ({navigation}) => {
+ 
   return (
-    <View style={styles.viewStyle}>
+    <View style={styles.container}>
         
-      <Text>Menu</Text>
-      <Button title={"หมวดหนัง"} onPress={() => navigation.navigate('genres')}/>
-      <Button title={"ค้นหาหนัง"} onPress={() => navigation.navigate('search')}/>
-      <Button title={"หนังที่ชื่นชอบ"} onPress={() => navigation.navigate('favourite')}/>
+      <Text style = {styles.titleStyle}>Menu</Text>
+
+      <TouchableOpacity  onPress={() => navigation.navigate('genres')}>
+        <Text style = {styles.menuStyle}>
+          หมวดหนัง
+          </Text>
+        </TouchableOpacity>
+
+      <TouchableOpacity  onPress={() => navigation.navigate('search')}>
+        <Text style = {styles.menuStyle}>
+          ค้นหาหนัง
+          </Text>
+        </TouchableOpacity>
+
+      <TouchableOpacity  onPress={() => navigation.navigate('favourite')}>
+        <Text style = {styles.menuStyle}>
+          หนังที่ชื่นชอบ
+          </Text>
+        </TouchableOpacity>
+        
+        
 
     </View>
    );
 }
 
 const styles = StyleSheet.create({
-  textStyle: {
-    fontSize: 30
+  titleStyle: {
+    fontSize: 40,
+    color: 'blue',
+    marginBottom: 30
   },
-  viewStyle: {
+  menuStyle: {
+    fontSize: 25,
+    color: 'red'
+    
+  },
+  container: {
+    flex: 1,
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: 50
-  }
+    backgroundColor: '#F5FCFF',
+  },
+ 
 });
 
 export default MenuScreen;

@@ -1,11 +1,13 @@
 import React from 'react';
 import { Text,View,StyleSheet,Button,TouchableOpacity } from 'react-native';
 
+
 const MovieScreen = () => {
   return (
     <View style={styles.viewStyle}>
         
       <Text>รายละเอียดหนัง</Text>
+  
 
     </View>
    );

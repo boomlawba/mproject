@@ -6,6 +6,10 @@ import GenresScreen from './src/screens/GenresScreen';
 import MovieScreen from './src/screens/MovieScreen';
 import FavouriteScreen from './src/screens/FavouriteScreen';
 import SearchScreen from './src/screens/SearchScreen';
+import animationScreen from './src/screens/typeScreen/animationScreen';
+import actionScreen from './src/screens/typeScreen/actionScreen';
+import comadyScreen from './src/screens/typeScreen/comadyScreen';
+import serieScreen from './src/screens/typeScreen/serieScreen';
 
 const navigator = createStackNavigator (
   {
@@ -14,7 +18,11 @@ const navigator = createStackNavigator (
     genres: GenresScreen,
     movie: MovieScreen,
     favourite: FavouriteScreen,
-    search: SearchScreen
+    search: SearchScreen,
+    anime: animationScreen,
+    action: actionScreen,
+    serie: serieScreen,
+    comady: comadyScreen,
   },
   {
     initialRouteName: 'first',

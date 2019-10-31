@@ -1,0 +1,35 @@
+import React from 'react';
+import { View, Text, StyleSheet,Image,ScrollView } from 'react-native';
+
+const ResultsDetail = ({ result }) => {
+    return (
+    <View style={styles.container}>
+        <ScrollView showsHorizontalScrollIndicator='false'>
+             <Image style={styles.image} source={{ uri: result.image_url}}/>
+        </ScrollView>
+    </View>
+    )
+};
+const styles = StyleSheet.create({
+    
+    image:{
+        width: 200,
+        height: 300,
+        borderRadius: 5,
+        marginBottom: 5
+    },
+    name: {
+        fontSize: 16,
+        fontWeight: "bold"
+    },
+    container: {
+        flex: 1,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+      },
+    
+});
+
+export default ResultsDetail;
