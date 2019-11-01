@@ -1,40 +1,26 @@
 import React from 'react';
 import { FlatList, ActivityIndicator, Text, View, StyleSheet, TextInput ,Button } from 'react-native';
 import ResultsDetail from '../component/ResultDetail';
-import testScreen from './testScreen';
 
 
 export default class SearchScreen extends React.Component {
 
-   static navigationOptions = {
-    title: 'Home',
-  };
-
-  gotoProfile = () => {
-    const { navigation } = this.props
-    navigation.navigate('search')
-  }
 
   constructor(props){
     super(props);
     this.state ={ 
       isLoading: true,
-      movie_type: '1'
+     
     }
 
   }
-  static navigationOptions = {
-    title: 'serch',
-  };
-
+ 
   gotoProfile = () => {
     const { navigation } = this.props
     navigation.navigate('Profile')
   }
 
-  click (){
-    {componentDidMount()}
-  }
+ 
   componentDidMount (){
     return  fetch("http://192.168.43.95:80/Movie_Project/test.php", {
       method: 'POST',
@@ -43,7 +29,7 @@ export default class SearchScreen extends React.Component {
           'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        movie_type: this.state.movie_type
+        movie_type: this.props.movie_type
       })
   })
 
@@ -78,13 +64,6 @@ export default class SearchScreen extends React.Component {
         </View>
       )
     }
-   else if(this.state.movie_type != '1'){
-      return(
-        <View>
-        <testScreen movie_type = {this.state.movie_type}/>
-        </View>
-      )
-    }
 
     return(
       <View style={styles.container}>
@@ -93,14 +72,11 @@ export default class SearchScreen extends React.Component {
          placeholder='search'
          onChangeText={movie_type => this.setState({movie_type})}
         />
-          
+          <Text>{this.props.movie_type}</Text>
         <Button
          title="TEST"
-         onPress={() => navigate ('serach')}
+         onPress={() => navigate('search')}
          />
-
-         <Text>...............................</Text>
-        
         <Text>{this.state.movie_type}</Text>
         <FlatList
           data={this.state.dataSource}
@@ -113,7 +89,6 @@ export default class SearchScreen extends React.Component {
           </View>}
           keyExtractor={({id}, index) => id}
         />
-      
       </View>
     );
   }

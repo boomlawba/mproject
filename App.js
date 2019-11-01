@@ -10,6 +10,7 @@ import animationScreen from './src/screens/typeScreen/animationScreen';
 import actionScreen from './src/screens/typeScreen/actionScreen';
 import comadyScreen from './src/screens/typeScreen/comadyScreen';
 import serieScreen from './src/screens/typeScreen/serieScreen';
+import testScreen from './src/screens/testScreen';
 
 const navigator = createStackNavigator (
   {
@@ -23,6 +24,7 @@ const navigator = createStackNavigator (
     action: actionScreen,
     serie: serieScreen,
     comady: comadyScreen,
+    test: testScreen
   },
   {
     initialRouteName: 'first',

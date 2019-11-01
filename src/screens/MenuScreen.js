@@ -21,7 +21,7 @@ const MenuScreen = ({navigation}) => {
           </Text>
         </TouchableOpacity>
 
-      <TouchableOpacity  onPress={() => navigation.navigate('favourite')}>
+      <TouchableOpacity  onPress={() => navigation.navigate('test')}>
         <Text style = {styles.menuStyle}>
           หนังที่ชื่นชอบ
           </Text>
