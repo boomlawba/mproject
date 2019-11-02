@@ -1,10 +1,11 @@
-import React from 'react';
-import { FlatList, ActivityIndicator, Text, View, StyleSheet, TextInput ,Button } from 'react-native';
+import React,{useState} from 'react';
+import { FlatList, ActivityIndicator, Text, View, StyleSheet, TextInput ,Button, TouchableOpacity } from 'react-native';
 import ResultsDetail from '../component/ResultDetail';
-import testScreen from './testScreen';
+import { withNavigation } from 'react-navigation';
 
 
-export default class SearchScreen extends React.Component {
+
+ class SearchScreen extends React.Component {
 
    static navigationOptions = {
     title: 'Home',
@@ -98,18 +99,22 @@ export default class SearchScreen extends React.Component {
          title="TEST"
          onPress={() => navigate ('serach')}
          />
-
-         <Text>...............................</Text>
         
         <Text>{this.state.movie_type}</Text>
         <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
           <View> 
+           <TouchableOpacity
+                onPress = {() => 
+                navigate('Detail',{id: item.id})}
+            >
               <ResultsDetail result = {item}/>
               <Text style = {styles.textStyle}>
                {item.name}
               </Text>
+
+              </TouchableOpacity>
           </View>}
           keyExtractor={({id}, index) => id}
         />
@@ -133,3 +138,5 @@ const styles = StyleSheet.create({
       }
       
 });
+
+export default withNavigation(SearchScreen) ;

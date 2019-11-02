@@ -1,11 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet,Image,ScrollView } from 'react-native';
+import { View, Text, StyleSheet,Image,ScrollView, TouchableOpacity } from 'react-native';
 
-const ResultsDetail = ({ result }) => {
+
+const ResultDetail = ({ result, navigation }) => {
     return (
     <View style={styles.container}>
         <ScrollView showsHorizontalScrollIndicator='false'>
+            
+           
              <Image style={styles.image} source={{ uri: result.image_url}}/>
+             
         </ScrollView>
     </View>
     )
@@ -32,4 +36,4 @@ const styles = StyleSheet.create({
     
 });
 
-export default ResultsDetail;
+export default ResultDetail;

@@ -11,6 +11,7 @@ import actionScreen from './src/screens/typeScreen/actionScreen';
 import comadyScreen from './src/screens/typeScreen/comadyScreen';
 import serieScreen from './src/screens/typeScreen/serieScreen';
 import testScreen from './src/screens/testScreen';
+import MovieDetail from './src/screens/MovieDetail';
 
 const navigator = createStackNavigator (
   {
@@ -21,6 +22,7 @@ const navigator = createStackNavigator (
     favourite: FavouriteScreen,
     search: SearchScreen,
     anime: animationScreen,
+    Detail: MovieDetail,
     action: actionScreen,
     serie: serieScreen,
     comady: comadyScreen,
