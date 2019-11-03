@@ -27,11 +27,7 @@ const styles = StyleSheet.create({
         fontWeight: "bold"
     },
     container: {
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        marginLeft : 10,
       },
     
 });

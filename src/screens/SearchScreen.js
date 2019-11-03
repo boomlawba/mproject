@@ -1,5 +1,12 @@
 import React,{useState} from 'react';
-import { FlatList, ActivityIndicator, Text, View, StyleSheet, TextInput ,Button, TouchableOpacity } from 'react-native';
+import { FlatList,
+   ActivityIndicator,
+    Text, 
+    View,
+    StyleSheet,
+    ToolbarAndroid,
+    TouchableOpacity, } from 'react-native';
+    
 import ResultsDetail from '../component/ResultDetail';
 import { withNavigation } from 'react-navigation';
 
@@ -25,17 +32,10 @@ import { withNavigation } from 'react-navigation';
 
   }
   static navigationOptions = {
-    title: 'serch',
+    title: 'Movie',
   };
 
-  gotoProfile = () => {
-    const { navigation } = this.props
-    navigation.navigate('Profile')
-  }
-
-  click (){
-    {componentDidMount()}
-  }
+  
   componentDidMount (){
     return  fetch("http://192.168.43.95:80/Movie_Project/test.php", {
       method: 'POST',
@@ -46,7 +46,7 @@ import { withNavigation } from 'react-navigation';
       body: JSON.stringify({
         movie_type: this.state.movie_type
       })
-  })
+  }) 
 
       .then((response) => response.json())
       .then((responseJson) => {
@@ -90,24 +90,17 @@ import { withNavigation } from 'react-navigation';
     return(
       <View style={styles.container}>
 
-        <TextInput 
-         placeholder='search'
-         onChangeText={movie_type => this.setState({movie_type})}
-        />
-          
-        <Button
-         title="TEST"
-         onPress={() => navigate ('serach')}
-         />
-        
-        <Text>{this.state.movie_type}</Text>
+       <Text>Movie</Text>
+              
         <FlatList
+         horizontal
+         showsHorizontalScrollIndicator = {false}
           data={this.state.dataSource}
           renderItem={({item}) => 
           <View> 
            <TouchableOpacity
                 onPress = {() => 
-                navigate('Detail',{id: item.id})}
+                navigate('Detail',{name: item.name,image: item.image_url, length: item.movie_length})}
             >
               <ResultsDetail result = {item}/>
               <Text style = {styles.textStyle}>

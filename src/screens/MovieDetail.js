@@ -1,61 +1,36 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet,Image,ScrollView } from 'react-native';
+import Video from 'react-native-video';
 
 const ResultsDetail = ({ navigation }) => {
 
-    const id = navigation.getParam('id');
-    const [result, setResult]= useState([null]);
-    const [saveid, setsaveid]= useState([id]);
-    console.log('id'+id);
-    console.log('save'+saveid);
+    const name = navigation.getParam('name');
+    const image = navigation.getParam('image');
+    const length = navigation.getParam('length');
     
 
-    const getResult =  id => {
-        fetch("http://192.168.43.95:80/Movie_Project/selectDetail.php", {
-      method: 'POST',
-      headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-          
-        id: {id}
-      })
-  })
-
-      .then((response) => response.json())
-      .then((responseJson) => {
-          setResult(responseJson);
-       
-         console.log(responseJson);
-        }, function(){
-          
-        })
+   
+    console.log('save'+image);
+    
 
     
-      .catch((error) =>{
-        console.error(error);
-          
-      })
-      .done();
-        
-    }
-
-    useEffect(() => {
-        getResult(id);
-    },[]);
-
-    console.log(result)
-    if (!result){
-        return null;
-    }
 
     return (
     <View style={styles.container}>
-        <ScrollView showsHorizontalScrollIndicator='false'>
-             <Image style={styles.image} source={{ uri: result.image_url}}/>
+       
+        
+            <View>
+            <Image style={styles.image} source={{ uri:image}}/>
+            </View >
 
-        </ScrollView>
+             <View style = {styles.detailstyle}>
+                  <Text style = {styles.name}>{name}</Text>
+                  <Text >ความยาวหนัง : {length}</Text>
+                  </View>
+            
+             
+
+        
     </View>
     )
 };
@@ -68,15 +43,20 @@ const styles = StyleSheet.create({
         marginBottom: 5
     },
     name: {
-        fontSize: 16,
+        fontSize: 20,
         fontWeight: "bold"
     },
     container: {
         flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
+        flexDirection: 'row',
+        marginLeft: 20,
+        marginRight: 10,
         alignItems: 'center',
         backgroundColor: '#F5FCFF',
+      },
+      detailstyle: {
+        marginLeft: 15,
+        backgroundColor: 'grey'
       },
     
 });

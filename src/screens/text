@@ -1,52 +1,39 @@
-import React from 'react';
-import { FlatList, ActivityIndicator, Text, View  } from 'react-native';
+const getResult =  id => {
+        fetch("http://192.168.43.95:80/Movie_Project/selectDetail.php", {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+          
+        id: {saveid}
+      })
+  })
 
-export default class GenresScreen extends React.Component {
-
-  constructor(props){
-    super(props);
-    this.state ={ isLoading: true}
-  }
-
-  componentDidMount(){
-    return fetch('http://192.168.43.95:80/Movie_Project/select.php')
       .then((response) => response.json())
       .then((responseJson) => {
-
-        this.setState({
-          isLoading: false, 
-          dataSource: responseJson,
-         
+          setResult(responseJson);
+       
+         console.log(responseJson);
         }, function(){
-          console.log(responseJson);
-        });
+          
+        })
 
-      })
+    
       .catch((error) =>{
         console.error(error);
-      });
-  }
-
-
-
-  render(){
-
-    if(this.state.isLoading){
-      return(
-        <View style={{flex: 1, padding: 20}}>
-          <ActivityIndicator/>
-        </View>
-      )
+          
+      })
+      .done();
+        
     }
 
-    return(
-      <View style={{flex: 1, paddingTop:20}}>
-        <FlatList
-          data={this.state.dataSource}
-          renderItem={({item}) => <Text>{item.id}, {item.name}</Text>}
-          keyExtractor={({id}, index) => id}
-        />
-      </View>
-    );
-  }
-}
+    useEffect(() => {
+        getResult(id);
+    },[]);
+
+    console.log(result)
+    if (!result){
+        return null;
+    }
