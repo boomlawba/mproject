@@ -10,18 +10,7 @@ import { FlatList,
 import ResultsDetail from '../component/ResultDetail';
 import { withNavigation } from 'react-navigation';
 
-
-
  class SearchScreen extends React.Component {
-
-   static navigationOptions = {
-    title: 'Home',
-  };
-
-  gotoProfile = () => {
-    const { navigation } = this.props
-    navigation.navigate('search')
-  }
 
   constructor(props){
     super(props);
@@ -43,9 +32,7 @@ import { withNavigation } from 'react-navigation';
           'Accept': 'application/json',
           'Content-Type': 'application/json'
       },
-      body: JSON.stringify({
-        movie_type: this.state.movie_type
-      })
+      
   }) 
 
       .then((response) => response.json())
@@ -100,7 +87,10 @@ import { withNavigation } from 'react-navigation';
           <View> 
            <TouchableOpacity
                 onPress = {() => 
-                navigate('Detail',{name: item.name,image: item.image_url, length: item.movie_length})}
+                navigate('Detail',{name: item.name,image: item.image_url,
+                   length: item.movie_length, rate: item.rating_movie,
+                  directer: item.director, trailer: item.Trailer_url
+                  , movie: item.Movie_url})}
             >
               <ResultsDetail result = {item}/>
               <Text style = {styles.textStyle}>
@@ -108,7 +98,7 @@ import { withNavigation } from 'react-navigation';
               </Text>
 
               </TouchableOpacity>
-          </View>}
+          </View>} 
           keyExtractor={({id}, index) => id}
         />
       
@@ -124,10 +114,11 @@ const styles = StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: 'black',
       },
       textStyle:{
-          marginLeft: 5
+          marginLeft: 5,
+          color: 'white',
       }
       
 });

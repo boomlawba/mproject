@@ -1,34 +1,35 @@
 import React from 'react';
-import { Text,View,StyleSheet,Button,TouchableOpacity } from 'react-native';
+import { Text,View,StyleSheet,Linking ,TouchableOpacity } from 'react-native';
 
 
 const MenuScreen = ({navigation}) => {
  
   return (
     <View style={styles.container}>
-        
-      <Text style = {styles.titleStyle}>Menu</Text>
 
+      <Text style = {styles.titleStyle}>Menu</Text>
+      <View>
+    <View>
       <TouchableOpacity  onPress={() => navigation.navigate('genres')}>
         <Text style = {styles.menuStyle}>
-          หมวดหนัง
+         - หมวดหนัง
           </Text>
         </TouchableOpacity>
+        </View>
 
+      <View>
       <TouchableOpacity  onPress={() => navigation.navigate('search')}>
         <Text style = {styles.menuStyle}>
-          ค้นหาหนัง
+         - รายชื่อหนังทั้งหมด 
           </Text>
         </TouchableOpacity>
-
-      <TouchableOpacity  onPress={() => navigation.navigate('test')}>
-        <Text style = {styles.menuStyle}>
-          หนังที่ชื่นชอบ
-          </Text>
-        </TouchableOpacity>
+        </View>
+    
+      <View>
+        </View>
         
         
-
+        </View>
     </View>
    );
 }
@@ -36,20 +37,23 @@ const MenuScreen = ({navigation}) => {
 const styles = StyleSheet.create({
   titleStyle: {
     fontSize: 40,
-    color: 'blue',
-    marginBottom: 30
+    color: 'red',
+    marginBottom: 30,
+    marginTop: 100,
+    
   },
   menuStyle: {
     fontSize: 25,
-    color: 'red'
+    color: 'blue'
     
   },
   container: {
+    width: '100%',
+    height: '100%',
     flex: 1,
     flexDirection: 'column',
-    justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'black',
   },
  
 });

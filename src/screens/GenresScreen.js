@@ -44,7 +44,7 @@ const GenresScreen = ({navigation}) => {
   return (
     <View style={styles.container}>
         
-      <Text>หมวดหนัง {type}</Text>
+      <Text style = {styles.textStyle}>หมวดหนัง {type}</Text>
 
       <Menu
           ref={this.setMenuRef}
@@ -64,7 +64,8 @@ const GenresScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   textStyle: {
-    fontSize: 30
+    fontSize: 30,
+    marginBottom: 200,
   },
   viewStyle: {
     justifyContent: 'center',

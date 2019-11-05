@@ -13,6 +13,9 @@ function wait(timeout) {
 }
 
 const HomeScreen = ({navigation}) => {
+   navigationOptions = {
+    title: 'Wellcome Mrec Hub ',
+  };
 
   const [refreshing, setRefreshing] = React.useState(false);
 
@@ -27,7 +30,7 @@ const HomeScreen = ({navigation}) => {
 
   return (
     
-    <ImageBackground source={{uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRu9FWaKQsPt3ediAoN0-xEGw3ikkMvsirkew7PJFdHD4UnNiKI"}} style={styles.wallpaper}>
+    <ImageBackground source={{uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRizjB-S5oh8HGyDuEAmwbZ1IrM8CsMu2L1n_sOanEt9jJ6fVLV"}} style={styles.wallpaper}>
   
 
     <SafeAreaView >
@@ -39,13 +42,13 @@ const HomeScreen = ({navigation}) => {
         }
       >
 
-
+<View style = {styles.viewicon}>
     <Image
     style = {styles.iconstyle}
     source={require('../image/icon/pronhub.png')}       
     />
- 
-
+ </View>
+<View style = {styles.viewclickStyle}>
     <TouchableOpacity onPress={() => navigation.navigate('menu')}>
     <Text style={styles.textStyle}>Start  </Text>
     </TouchableOpacity>
@@ -54,7 +57,7 @@ const HomeScreen = ({navigation}) => {
     'About me',
     'แอปพลิเคชั่นสำหรับดูข้อมูลหนังและซีรี่ที่หน้าสนใจในปัจจุบัน',
     [
-      {text: 'Ask me later', onPress: () => console.log('Ask me later pressed')},
+      {text: 'See more', onPress:() => navigation.navigate('about')},
       {
         text: 'Cancel',
         onPress: () => console.log('Cancel Pressed'),
@@ -66,7 +69,7 @@ const HomeScreen = ({navigation}) => {
   )}>
     <Text style={styles.textStyle}>About me   </Text>
     </TouchableOpacity>
-
+    </View>
     </ScrollView>
     </View>
     </SafeAreaView>
@@ -78,9 +81,11 @@ const HomeScreen = ({navigation}) => {
 
 const styles = StyleSheet.create({
   textStyle: {
-    fontSize:30 ,
-    color: 'grey',
+    fontSize:25 ,
+    color: 'white',
     fontWeight: 'bold',
+    marginTop: 20,
+    marginLeft: 10
   },
   iconstyle: {
     width: 300,
@@ -95,9 +100,26 @@ const styles = StyleSheet.create({
   ,
   viewStyle: {
     flex: 1,
+    flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
     paddingTop: 50
+  },
+  viewclickStyle: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingTop: 50
+  },
+  viewicon: {
+    borderColor: 'orange',
+    borderTopWidth: 10,
+    borderLeftWidth: 10,
+    borderRightWidth: 10,
+    borderBottomWidth: 10,
+
+  
   }
 });
 
